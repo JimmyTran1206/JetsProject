@@ -6,6 +6,7 @@ public class JetsApplication {
 
 	private AirField airField;
 	private Scanner kb = new Scanner(System.in);
+	private int fleetSize;
 
 	public JetsApplication() {
 		super();
@@ -29,7 +30,8 @@ public class JetsApplication {
 	
 	public void launch() {
 		displayUserMenu();
-		listJet(airField);
+		listFleet(airField);
+		flyAllJets(airField);
 	}
 
 	public void displayUserMenu() {
@@ -47,9 +49,19 @@ public class JetsApplication {
 		System.out.println("=============================================");
 	}
 	
-	public void listJet(AirField af) {
-		int fleetSize=af.getJets().size();
-		System.out.printf("There are %d aircrafts in the airfield: \n", fleetSize);
+	public void listFleet(AirField af) {
+		fleetSize=af.getJets().size();
+		System.out.printf("There are %d aircrafts on the field: \n", fleetSize);
+		for (int i=0;i<fleetSize; i++) {
+			System.out.println("Aircraft # "+ (i+1));
+			af.getJets().get(i).getJetInfo();			
+		}
+		System.out.println("--------------------------------------------- ");
+	}
+	
+	public void flyAllJets(AirField af) {
+		fleetSize=af.getJets().size();
+		System.out.printf("There are %d aircrafts ready to flight: \n", fleetSize);
 		for (int i=0;i<fleetSize; i++) {
 			System.out.println("Aircraft # "+ (i+1));
 			af.getJets().get(i).fly();			

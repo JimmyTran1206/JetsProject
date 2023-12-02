@@ -45,6 +45,12 @@ public abstract class Jet {
 		this.range = range;
 		this.price = price;
 	}
+	
+	public void getJetInfo() {
+		String output= String.format("Model: %s, Speed: %.2f mph, Range: %d miles, Price: $%d", model, speed,range,price);
+		System.out.println(output);
+	}
+	
 	public void fly() {
 		double maxFlightDuration= range/speed;
 		String output= String.format("Model: %s, Speed: %.2f mph, Range: %d miles, Price: $%d, Max Flight Duration: %.2fh", model, speed,range,price,maxFlightDuration);
