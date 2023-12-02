@@ -6,7 +6,7 @@ public class CargoPlane extends Jet implements CargoCarrier {
 		super(model, speed, range, price);
 	}
 	public void loadCargo() {
-		
+		// message about loading cargo
 	}
 	
 }
