@@ -33,6 +33,9 @@ public class JetsApplication {
 		flyAllJets(airField);
 		viewFastestJet(airField);
 		viewLongestRange(airField);
+		loadAllCargoJets(airField);
+		dogFight(airField);
+		loadAllPassenger(airField);
 	}
 
 	public void displayUserMenu() {
@@ -130,7 +133,63 @@ public class JetsApplication {
 	}
 
 	public void loadAllCargoJets(AirField af) {
-
+		int cargoFleetSize=0;
+		// find the number of cargo jets
+		for (Jet jet:af.getJets()) {
+			if(jet instanceof CargoPlane) {
+				cargoFleetSize++;
+			}
+		}
+		if(cargoFleetSize==0) {
+			System.out.println("There is no Cargo Aircraft on the field. Please add a Cargo Aircraft.");
+			return;
+		}
+		for (Jet jet:af.getJets()) {
+			if(jet instanceof CargoPlane) {
+				((CargoPlane) jet).loadCargo();
+			}
+		}
+		System.out.println("--------------------------------------------- ");
+	}
+	
+	public void dogFight(AirField af) {
+		int fighterFleetSize=0;
+		// find the number of fighter jets
+		for (Jet jet:af.getJets()) {
+			if(jet instanceof FighterJet) {
+				fighterFleetSize++;
+			}
+		}
+		if(fighterFleetSize==0) {
+			System.out.println("There is no Fighter Aircraft on the field. Please add a Fighter Aircraft.");
+			return;
+		}
+		for (Jet jet:af.getJets()) {
+			if(jet instanceof FighterJet) {
+				((FighterJet) jet).fight();
+			}
+		}
+		System.out.println("--------------------------------------------- ");
+	}
+	
+	public void loadAllPassenger(AirField af) {
+		int passengerFleetSize=0;
+		// find the number of passenger jets
+		for (Jet jet:af.getJets()) {
+			if(jet instanceof PassengerJet) {
+				passengerFleetSize++;
+			}
+		}
+		if(passengerFleetSize==0) {
+			System.out.println("There is no Passenger Aircraft on the field. Please add a Passenger Aircraft.");
+			return;
+		}
+		for (Jet jet:af.getJets()) {
+			if(jet instanceof PassengerJet) {
+				((PassengerJet) jet).loadPassenger();
+			}
+		}
+		System.out.println("--------------------------------------------- ");
 	}
 
 }

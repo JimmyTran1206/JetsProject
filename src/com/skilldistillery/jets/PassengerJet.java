@@ -5,8 +5,10 @@ public class PassengerJet extends Jet implements PassengerCarrier {
 		super(model, speed, range, price);
 	}
 	
+	@Override
 	public void loadPassenger() {
-		
+		String aircraftModel=super.getModel();
+		System.out.printf("Passenger Aircraft %s is ready for passenger boarding. \n", aircraftModel);
 	}
 
 }
