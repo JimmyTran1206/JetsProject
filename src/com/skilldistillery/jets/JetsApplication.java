@@ -28,17 +28,11 @@ public class JetsApplication {
 	}
 
 	public void launch() {
-		displayUserMenu();
-		listFleet(airField);
-		flyAllJets(airField);
-		viewFastestJet(airField);
-		viewLongestRange(airField);
-		loadAllCargoJets(airField);
-		dogFight(airField);
-		loadAllPassenger(airField);
+		displayMainMenu();
+		promptUserInputMainMenu();
 	}
 
-	public void displayUserMenu() {
+	public void displayMainMenu() {
 		System.out.println("=============================================");
 		System.out.println("|| 1. List fleet                           ||");
 		System.out.println("|| 2. Fly all jets                         ||");
@@ -50,7 +44,7 @@ public class JetsApplication {
 		System.out.println("|| 8. Add a jet to Fleet                   ||");
 		System.out.println("|| 9. Remove a jet from Fleet              ||");
 		System.out.println("||10. Quit                                 ||");
-		System.out.println("|| Choose options 1-9 to begin             ||");
+		System.out.println("||Make choices 1-10 or press ? for menu    ||");
 		System.out.println("=============================================");
 	}
 
@@ -133,63 +127,132 @@ public class JetsApplication {
 	}
 
 	public void loadAllCargoJets(AirField af) {
-		int cargoFleetSize=0;
+		int cargoFleetSize = 0;
 		// find the number of cargo jets
-		for (Jet jet:af.getJets()) {
-			if(jet instanceof CargoPlane) {
+		for (Jet jet : af.getJets()) {
+			if (jet instanceof CargoPlane) {
 				cargoFleetSize++;
 			}
 		}
-		if(cargoFleetSize==0) {
+		if (cargoFleetSize == 0) {
 			System.out.println("There is no Cargo Aircraft on the field. Please add a Cargo Aircraft.");
 			return;
 		}
-		for (Jet jet:af.getJets()) {
-			if(jet instanceof CargoPlane) {
+		for (Jet jet : af.getJets()) {
+			if (jet instanceof CargoPlane) {
 				((CargoPlane) jet).loadCargo();
 			}
 		}
 		System.out.println("--------------------------------------------- ");
 	}
-	
+
 	public void dogFight(AirField af) {
-		int fighterFleetSize=0;
+		int fighterFleetSize = 0;
 		// find the number of fighter jets
-		for (Jet jet:af.getJets()) {
-			if(jet instanceof FighterJet) {
+		for (Jet jet : af.getJets()) {
+			if (jet instanceof FighterJet) {
 				fighterFleetSize++;
 			}
 		}
-		if(fighterFleetSize==0) {
+		if (fighterFleetSize == 0) {
 			System.out.println("There is no Fighter Aircraft on the field. Please add a Fighter Aircraft.");
 			return;
 		}
-		for (Jet jet:af.getJets()) {
-			if(jet instanceof FighterJet) {
+		for (Jet jet : af.getJets()) {
+			if (jet instanceof FighterJet) {
 				((FighterJet) jet).fight();
 			}
 		}
 		System.out.println("--------------------------------------------- ");
 	}
-	
+
 	public void loadAllPassenger(AirField af) {
-		int passengerFleetSize=0;
+		int passengerFleetSize = 0;
 		// find the number of passenger jets
-		for (Jet jet:af.getJets()) {
-			if(jet instanceof PassengerJet) {
+		for (Jet jet : af.getJets()) {
+			if (jet instanceof PassengerJet) {
 				passengerFleetSize++;
 			}
 		}
-		if(passengerFleetSize==0) {
+		if (passengerFleetSize == 0) {
 			System.out.println("There is no Passenger Aircraft on the field. Please add a Passenger Aircraft.");
 			return;
 		}
-		for (Jet jet:af.getJets()) {
-			if(jet instanceof PassengerJet) {
+		for (Jet jet : af.getJets()) {
+			if (jet instanceof PassengerJet) {
 				((PassengerJet) jet).loadPassenger();
 			}
 		}
 		System.out.println("--------------------------------------------- ");
+	}
+
+	public void promptUserInputMainMenu() {
+		System.out.print("Select your choice: ");
+		String userChoice;
+		while (true) {
+			userChoice = kb.nextLine();
+			switch (userChoice) {
+			case "?":
+			case "/":
+				displayMainMenu();
+				System.out.print("Select your choice: ");
+				break;
+			case "1":
+				System.out.println("You have chosen to view the aircaft: ");
+				listFleet(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "2":
+				System.out.println("You have chosen to fly the aircaft: ");
+				flyAllJets(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "3":
+				System.out.println("You have chosen to view the fastest aircaft: ");
+				viewFastestJet(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "4":
+				System.out.println("You have chosen to view the aircaft with the longest range: ");
+				viewLongestRange(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "5":
+				System.out.println("You have chosen to load all Cargo aircraft: ");
+				loadAllCargoJets(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "6":
+				System.out.println("You have chosen to make Fighter Aircraft kombat-ready: ");
+				dogFight(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "7":
+				System.out.println("You have chosen to load all Passenger Aircraft: ");
+				loadAllPassenger(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "8":
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "10":
+				System.out.println("You have chosen to quit the progrmam. \n  See you again! \n    Exiting...");
+				return;
+			default:
+				System.out.print("Invalid choice. Please select 1-10 or press ? for main menu: ");
+			}
+		}
+
+	}
+
+	public void displayJetSubMenu() {
+		System.out.println("=============================================");
+		System.out.println("|| 1. Cargo Aircraft                       ||");
+		System.out.println("|| 2. Fighter Aircraft                     ||");
+		System.out.println("|| 3. Passenger Aircraft                   ||");
+		System.out.println("|| 4. Return to main                       ||");
+		System.out.println("||Make choices 1-4 or press ? for menu     ||");
+		System.out.println("=============================================");
 	}
 
 }
