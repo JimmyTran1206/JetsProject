@@ -32,20 +32,81 @@ public class JetsApplication {
 		promptUserInputMainMenu();
 	}
 
+	public void promptUserInputMainMenu() {
+		System.out.print("Select your choice: ");
+		String userChoice;
+		while (true) {
+			userChoice = kb.nextLine();
+			switch (userChoice) {
+			case "?":
+			case "/":
+				displayMainMenu();
+				System.out.print("Select your choice: ");
+				break;
+			case "1":
+				System.out.println("You have chosen to view all aircafts: ");
+				listFleet(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "2":
+				System.out.println("You have chosen to fly all aircafts: ");
+				flyAllJets(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "3":
+				System.out.println("You have chosen to view the fastest aircaft: ");
+				viewFastestJet(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "4":
+				System.out.println("You have chosen to view the aircaft with the longest range: ");
+				viewLongestRange(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "5":
+				System.out.println("You have chosen to load all Cargo aircrafts: ");
+				loadAllCargoJets(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "6":
+				System.out.println("You have chosen to make all Fighter Aircrafts kombat-ready: ");
+				dogFight(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "7":
+				System.out.println("You have chosen to load all Passenger Aircrafts: ");
+				loadAllPassenger(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "8":
+				System.out.println("You have chosen to add a new aircraft to your fleet: ");
+				addNewJetProcedure(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
+			case "10":
+				System.out.println("You have chosen to quit the progrmam. \n  See you again! \n    Exiting...");
+				return;
+			default:
+				System.out.print("Invalid choice. Please select 1-10 or press ? for main menu: ");
+			}
+		}
+
+	}
+
 	public void displayMainMenu() {
-		System.out.println("=============================================");
-		System.out.println("|| 1. List fleet                           ||");
-		System.out.println("|| 2. Fly all jets                         ||");
-		System.out.println("|| 3. View fastest jet                     ||");
-		System.out.println("|| 4. View jet with longest range          ||");
-		System.out.println("|| 5. Load all Cargo Jets                  ||");
-		System.out.println("|| 6. Dogfight!                            ||");
-		System.out.println("|| 7. Load all Passenger Jets              ||");
-		System.out.println("|| 8. Add a jet to Fleet                   ||");
-		System.out.println("|| 9. Remove a jet from Fleet              ||");
-		System.out.println("||10. Quit                                 ||");
-		System.out.println("||Make choices 1-10 or press ? for menu    ||");
-		System.out.println("=============================================");
+		System.out.println("==================================================");
+		System.out.println("|| 1. List fleet                                ||");
+		System.out.println("|| 2. Fly all jets                              ||");
+		System.out.println("|| 3. View fastest jet                          ||");
+		System.out.println("|| 4. View jet with longest range               ||");
+		System.out.println("|| 5. Load all Cargo Jets                       ||");
+		System.out.println("|| 6. Dogfight!                                 ||");
+		System.out.println("|| 7. Load all Passenger Jets                   ||");
+		System.out.println("|| 8. Add a jet to Fleet                        ||");
+		System.out.println("|| 9. Remove a jet from Fleet                   ||");
+		System.out.println("||10. Quit                                      ||");
+		System.out.println("||Make choices 1-10 or press ? for main menu.   ||");
+		System.out.println("==================================================");
 	}
 
 	public void listFleet(AirField af) {
@@ -186,73 +247,188 @@ public class JetsApplication {
 		System.out.println("--------------------------------------------- ");
 	}
 
-	public void promptUserInputMainMenu() {
-		System.out.print("Select your choice: ");
-		String userChoice;
-		while (true) {
-			userChoice = kb.nextLine();
-			switch (userChoice) {
-			case "?":
-			case "/":
-				displayMainMenu();
-				System.out.print("Select your choice: ");
-				break;
-			case "1":
-				System.out.println("You have chosen to view the aircaft: ");
-				listFleet(airField);
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "2":
-				System.out.println("You have chosen to fly the aircaft: ");
-				flyAllJets(airField);
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "3":
-				System.out.println("You have chosen to view the fastest aircaft: ");
-				viewFastestJet(airField);
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "4":
-				System.out.println("You have chosen to view the aircaft with the longest range: ");
-				viewLongestRange(airField);
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "5":
-				System.out.println("You have chosen to load all Cargo aircraft: ");
-				loadAllCargoJets(airField);
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "6":
-				System.out.println("You have chosen to make Fighter Aircraft kombat-ready: ");
-				dogFight(airField);
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "7":
-				System.out.println("You have chosen to load all Passenger Aircraft: ");
-				loadAllPassenger(airField);
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "8":
-				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
-				break;
-			case "10":
-				System.out.println("You have chosen to quit the progrmam. \n  See you again! \n    Exiting...");
-				return;
-			default:
-				System.out.print("Invalid choice. Please select 1-10 or press ? for main menu: ");
+	public void displayJetSubMenu() {
+		System.out.println("=============================================");
+		System.out.println("|| Adding an aircraft to the fleet:        ||");
+		System.out.println("|| 1. Cargo Aircraft                       ||");
+		System.out.println("|| 2. Fighter Aircraft                     ||");
+		System.out.println("|| 3. Passenger Aircraft                   ||");
+		System.out.println("|| 4. Return to main menu                  ||");
+		System.out.println("||Make choices 1-3                         ||");
+		System.out.println("||Press 4 or ? for returning to main menu  ||");
+		System.out.println("=============================================");
+	}
+
+	private boolean isValidNumericInput(String input, String numType) {
+		// check if a string is a valid numeric input of type int, long, double
+		switch (numType) {
+		case "int":
+			try {
+				int x = Integer.parseInt(input);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
 			}
+		case "long":
+			try {
+				long x = Long.parseLong(input);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		case "double":
+			try {
+				double x = Double.parseDouble(input);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		default:
+			return false;
+		}
+	}
+
+	private String promptEnter(String description) {
+		// Prompt the user to enter model/speed/range/price, check type, return a valid
+		// string value/ cancel/ or prompt the user until they input the correct one
+		while (true) {
+			System.out.printf("Enter the aircraft %s: ", description);
+			String userInput = kb.nextLine();
+			if (userInput.toLowerCase().equals("cancel")) {
+				return "cancel";
+			}
+			switch (description) {
+			case "model":
+				return userInput;
+			case "speed":
+				if (isValidNumericInput(userInput, "double")) {
+					return userInput;
+				} else {
+					System.out.println("Invalid value for aircraft speed. Please try again.");
+					break;
+				}
+			case "range":
+				if (isValidNumericInput(userInput, "int")) {
+					return userInput;
+				} else {
+					System.out.println("Invalid value for aircraft range. Please try again.");
+					break;
+				}
+			case "price":
+				if (isValidNumericInput(userInput, "long")) {
+					return userInput;
+				} else {
+					System.out.println("Invalid value for aircraft price. Please try again.");
+					break;
+				}
+
+			}
+		}
+	}
+
+	public boolean addNewJet(String jetType, AirField af) {
+		System.out.printf("Add a %s Aircraft to the fleet... \n", jetType);
+		System.out.println("Type \"cancel\" anytime you change your mind...");
+		String model;
+		double speed;
+		int range;
+		long price;
+		String userInput = "";
+
+		// prompt model
+		userInput = promptEnter("model");
+		if (userInput.equals("cancel")) {
+			return false;
+		} else {
+			model = userInput;
+		}
+
+		// prompt speed
+		userInput = promptEnter("speed");
+		if (userInput.equals("cancel")) {
+			return false;
+		} else {
+			speed = Double.parseDouble(userInput);
+		}
+
+		// prompt range
+		userInput = promptEnter("range");
+		if (userInput.equals("cancel")) {
+			return false;
+		} else {
+			range = Integer.parseInt(userInput);
+		}
+
+		// prompt price
+		userInput = promptEnter("price");
+		if (userInput.equals("cancel")) {
+			return false;
+		} else {
+			price = Long.parseLong(userInput);
+		}
+
+		switch (jetType) {
+		case "Cargo":
+			CargoPlane cp = new CargoPlane(model, speed, range, price);
+			af.getJets().add(cp);
+			return true;
+		case "Fighter":
+			FighterJet fj = new FighterJet(model, speed, range, price);
+			af.getJets().add(fj);
+			return true;
+		case "Passenger":
+			PassengerJet pj = new PassengerJet(model, speed, range, price);
+			af.getJets().add(pj);
+			return true;
+		default:
+			return false;
 		}
 
 	}
 
-	public void displayJetSubMenu() {
-		System.out.println("=============================================");
-		System.out.println("|| 1. Cargo Aircraft                       ||");
-		System.out.println("|| 2. Fighter Aircraft                     ||");
-		System.out.println("|| 3. Passenger Aircraft                   ||");
-		System.out.println("|| 4. Return to main                       ||");
-		System.out.println("||Make choices 1-4 or press ? for menu     ||");
-		System.out.println("=============================================");
+	public void addNewJetProcedure(AirField af) {
+		String userInput;
+		boolean newAirCraftIsAdded;
+		while (true) {
+			displayJetSubMenu();
+			System.out.print("Please select your choice: ");
+			userInput = kb.nextLine();
+			switch (userInput) {
+			case "1":
+				newAirCraftIsAdded = addNewJet("Cargo", af);
+				if(!newAirCraftIsAdded) {
+					System.out.println("Cancel adding new aircraft...");
+				}else {
+					System.out.println("A new Cargo Aircraft has been added to your fleet");
+				}
+				break;
+			case "2":
+				newAirCraftIsAdded = addNewJet("Fighter", af);
+				if(!newAirCraftIsAdded) {
+					System.out.println("Cancel adding new aircraft...");
+				}else {
+					System.out.println("A new Fighter Aircraft has been added to your fleet");
+				}
+				break;
+			case "3":
+				newAirCraftIsAdded = addNewJet("Passenger", af);
+				if(!newAirCraftIsAdded) {
+					System.out.println("Cancel adding new aircraft...");
+				}else {
+					System.out.println("A new Passenger Aircraft has been added to your fleet");
+				}
+				break;
+			case "?":
+			case "/":
+			case "4":
+				System.out.println("Returning to main menu...");
+				displayMainMenu();
+				return;
+			default:
+				System.out.println("Invalid input. Please select 1-4 or press ? for main menu");
+			}
+		}
 	}
 
+// end of the class,do not go pass this point
 }
