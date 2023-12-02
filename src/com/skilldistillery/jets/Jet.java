@@ -57,6 +57,6 @@ public abstract class Jet {
 		System.out.println(output);
 	}
 	public double getSpeedInMach() {
-		return this.speed;
+		return this.speed*0.001303;
 	}
 }

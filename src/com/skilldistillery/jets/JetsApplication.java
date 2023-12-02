@@ -83,6 +83,11 @@ public class JetsApplication {
 				addNewJetProcedure(airField);
 				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
 				break;
+			case "9":
+				System.out.println("You have chosen to remove an aircraft to your fleet: ");
+				removeJetProcedure(airField);
+				System.out.print("Select another choice, press 10 to exit or press ? for main menu: ");
+				break;
 			case "10":
 				System.out.println("You have chosen to quit the progrmam. \n  See you again! \n    Exiting...");
 				return;
@@ -254,7 +259,7 @@ public class JetsApplication {
 		System.out.println("|| 2. Fighter Aircraft                     ||");
 		System.out.println("|| 3. Passenger Aircraft                   ||");
 		System.out.println("|| 4. Return to main menu                  ||");
-		System.out.println("||Make choices 1-3                         ||");
+		System.out.println("||Make choices 1-3.                        ||");
 		System.out.println("||Press 4 or ? for returning to main menu  ||");
 		System.out.println("=============================================");
 	}
@@ -396,25 +401,25 @@ public class JetsApplication {
 			switch (userInput) {
 			case "1":
 				newAirCraftIsAdded = addNewJet("Cargo", af);
-				if(!newAirCraftIsAdded) {
+				if (!newAirCraftIsAdded) {
 					System.out.println("Cancel adding new aircraft...");
-				}else {
+				} else {
 					System.out.println("A new Cargo Aircraft has been added to your fleet");
 				}
 				break;
 			case "2":
 				newAirCraftIsAdded = addNewJet("Fighter", af);
-				if(!newAirCraftIsAdded) {
+				if (!newAirCraftIsAdded) {
 					System.out.println("Cancel adding new aircraft...");
-				}else {
+				} else {
 					System.out.println("A new Fighter Aircraft has been added to your fleet");
 				}
 				break;
 			case "3":
 				newAirCraftIsAdded = addNewJet("Passenger", af);
-				if(!newAirCraftIsAdded) {
+				if (!newAirCraftIsAdded) {
 					System.out.println("Cancel adding new aircraft...");
-				}else {
+				} else {
 					System.out.println("A new Passenger Aircraft has been added to your fleet");
 				}
 				break;
@@ -428,6 +433,43 @@ public class JetsApplication {
 				System.out.println("Invalid input. Please select 1-4 or press ? for main menu");
 			}
 		}
+	}
+
+	public void removeJetProcedure(AirField af) {
+		if (af.getJets().size() == 0) {
+			System.out.println("There is no aircraft on the field. Please add new aircraft");
+			return;
+		}
+		// display aircraft for removal:
+		fleetSize = af.getJets().size();
+		System.out.println("Aircrafts in your field:");
+		System.out.println("------------------------");
+		for (int i = 0; i < fleetSize; i++) {
+			String output = String.format("%3d. %s", (i + 1), af.getJets().get(i).getModel());
+			System.out.println(output);
+		}
+		System.out.println("------------------------");
+		System.out.print("Select an aircraft number to remove or type \"cancel\": ");
+		int jetToRemove = 0;
+		// validate input
+		while (true) {
+			String userInput = kb.nextLine();
+			if(userInput.equals("cancel")) {
+				System.out.println("Cancel removing jet...");
+				displayMainMenu();
+				return;
+			}
+			boolean isNumericInput = isValidNumericInput(userInput, "int"); // check if input is an integer
+			if (!isNumericInput || Integer.parseInt(userInput) < 1 || Integer.parseInt(userInput) > fleetSize) {
+				System.out.print("Invalid input. Please enter an integer less than or equal to " + fleetSize + " :");
+				continue;
+			} else {
+				jetToRemove = Integer.parseInt(userInput);
+				break;
+			}
+		}
+		String removedJetModel= af.getJets().remove(jetToRemove-1).getModel();
+		System.out.printf("Remove aircraft %s from your fleet. \n", removedJetModel);
 	}
 
 // end of the class,do not go pass this point
