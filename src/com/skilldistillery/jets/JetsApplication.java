@@ -13,12 +13,23 @@ public class JetsApplication {
 
 	public static void main(String[] args) {
 		JetsApplication app = new JetsApplication();
+		app.initialization();
 		app.launch();
+		app.cleanUp();
+	}
+	
+	public void initialization() {
+		airField=new AirField();
 	}
 
+	
+	public void cleanUp() {
+		kb.close();
+	}
+	
 	public void launch() {
 		displayUserMenu();
-
+		listJet(airField);
 	}
 
 	public void displayUserMenu() {
@@ -35,5 +46,14 @@ public class JetsApplication {
 		System.out.println("|| Choose options 1-9 to begin             ||");
 		System.out.println("=============================================");
 	}
-
+	
+	public void listJet(AirField af) {
+		int fleetSize=af.getJets().size();
+		System.out.printf("There are %d aircrafts in the airfield: \n", fleetSize);
+		for (int i=0;i<fleetSize; i++) {
+			System.out.println("Aircraft # "+ (i+1));
+			af.getJets().get(i).fly();			
+		}
+		System.out.println("--------------------------------------------- ");
+	}
 }

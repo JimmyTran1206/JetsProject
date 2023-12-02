@@ -47,7 +47,7 @@ public abstract class Jet {
 	}
 	public void fly() {
 		double maxFlightDuration= range/speed;
-		String output= String.format("Model: %s, Speed: %f, Range: %d, Price: %d, Max Flight Duration: %.2f", model, speed,range,price,maxFlightDuration);
+		String output= String.format("Model: %s, Speed: %.2f mph, Range: %d miles, Price: $%d, Max Flight Duration: %.2fh", model, speed,range,price,maxFlightDuration);
 		System.out.println(output);
 	}
 	public double getSpeedInMach() {
