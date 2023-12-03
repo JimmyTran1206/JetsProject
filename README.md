@@ -74,7 +74,35 @@ FighterJet..|>CombatReady
 PassengerJet..|>PassengerCarrier
 
 ```
-Class `AirField` is instantiated with 5 aircrafts from all three concrete classes. Class 
+**Figure 1: JetsProject diagram.
+
+Class `AirField` is instantiated with 5 aircrafts from all three concrete classes. Class `JetsApplication` contains the `main()` method for user interaction. Users can interact with the app by:
+1. List fleet
+2. Fly all jets
+3. View fastest jet
+4. View jet with longest range
+5. Load all Cargo Jets
+6. Dogfight!
+7. Load all Passenger Jets
+8. Add a jet to Fleet
+9. Remove a jet from Fleet
+10. Quit
+
+Each functionality is implemented by separated methods accessing and manipulating elements in an `ArrayList`. The user experience are implemented so that
+- User inputs are validated to avoid unexpected exceptions that can cause program to crash.
+- The big menu does not re-appear after each choice to save screen resource, however, users can choose to view the menu any time by pressing ? or /.
+- User can change their mind on every steps of adding/ removing jets.
+
+In adding a jet (option 8), the user is prompted with a sub menu specify the aircraft type to add:
+1. Cargo AirCraft
+2. Fighter AirCraft
+3. Passenger Aircraft
+4. Return to main menu
+When in this sub-menu, user can select the type of aircraft to add the the fleet. Once type is selected, user will be prompted to input the aircraft model, speed, range, and price. At any time in the process, user can choose to opt out by entering "cancel". When appropriate, user can type ? to return to the main menu within the sub menu context.
+
+In removing a jet (option 9), the user is presented with a list of jet to remove. The jet are dynamically numbered according to the length of the list at the time of querying thank to the implementation of `ArrayList` in the `AirField` class. The program can properly handle the case when there is no aircraft on the field.
+
+I invite you to download and experience this mini-program.
 
 ### Tech Used
 This project makes use of vanilla Java together with fundamental object-oriented concepts: abstraction, polymorphism,  inheritance, and encapsulation. The projects demonstrates the flexible of `ArrayList` datatype when using with abstract classes, concrete classes, and interfaces.  the project also employs Java exceptions to check for valid input, and implements smooth user experience process where the users have proper instructions on how to interact with the program without too many details fed in or too much information left out. Users will have a feeling of control when interacting with the program.    
