@@ -2,7 +2,8 @@
 
 ### Description
 This project applies many techniques in using `ArrayList`, `abstract` classes, `concrete` classes and interface in a simple simulation of airfield management. In this project, `Jet` is an abstract class spanning 3 concrete class `CargoPlane`, `FighterJet`, and `PassengerJet`. Each concrete aircraft class implement its own interface. The relationship of these classes is described in the following class diagram:
-![[UMLJets.png]]
+
+
 
 ```mermaid
 classDiagram
@@ -75,6 +76,7 @@ PassengerJet..|>PassengerCarrier
 
 ```
 <div align="center"><em>Figure 1: JetsProject diagram.</em></div>
+
 
 Class `AirField` is instantiated with 5 aircrafts from all three concrete classes. Class `JetsApplication` contains the `main()` method for user interaction. Users can interact with the app by:
 1. List fleet
