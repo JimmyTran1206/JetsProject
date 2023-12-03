@@ -116,3 +116,4 @@ I have tried to generalize the tasks into each method. However, there are some m
 Object-Oriented-Programming (OOP) is a big concept including four main principles: abstraction, polymorphism, inheritance, and encapsulation. Java implement objects, data and functionality by organizing the codes into classes, fields, and methods. Java classes are classified as concrete, abstract, and final concrete. A class can inherits from another non-final class and can implements many interfaces. `ArrrayList` and generic types greatly enhance the flexibility of Java to model complex structure of real-world objects.
 
 
+
