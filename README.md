@@ -74,7 +74,7 @@ FighterJet..|>CombatReady
 PassengerJet..|>PassengerCarrier
 
 ```
-**Figure 1: JetsProject diagram.
+*Figure 1: JetsProject diagram.*
 
 Class `AirField` is instantiated with 5 aircrafts from all three concrete classes. Class `JetsApplication` contains the `main()` method for user interaction. Users can interact with the app by:
 1. List fleet
