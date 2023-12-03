@@ -8,7 +8,7 @@ public class JetsApplication {
 	private Scanner kb = new Scanner(System.in);
 	private int fleetSize;
 
-	public JetsApplication() {
+	private JetsApplication() {
 		super();
 	}
 
@@ -19,20 +19,20 @@ public class JetsApplication {
 		app.cleanUp();
 	}
 
-	public void initialization() {
+	private void initialization() {
 		airField = new AirField();
 	}
 
-	public void cleanUp() {
+	private void cleanUp() {
 		kb.close();
 	}
 
-	public void launch() {
+	private void launch() {
 		displayMainMenu();
 		promptUserInputMainMenu();
 	}
 
-	public void promptUserInputMainMenu() {
+	private void promptUserInputMainMenu() {
 		System.out.print("Select your choice: ");
 		String userChoice;
 		while (true) {
@@ -98,7 +98,7 @@ public class JetsApplication {
 
 	}
 
-	public void displayMainMenu() {
+	private void displayMainMenu() {
 		System.out.println("==================================================");
 		System.out.println("|| 1. List fleet                                ||");
 		System.out.println("|| 2. Fly all jets                              ||");
@@ -114,10 +114,11 @@ public class JetsApplication {
 		System.out.println("==================================================");
 	}
 
-	public void listFleet(AirField af) {
+	private void listFleet(AirField af) {
 		fleetSize = af.getJets().size();
 		if (fleetSize == 0) {
 			System.out.println("There is no aircraft on the field. Please add an aircraft.");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		System.out.printf("Number of aircrafts on the field: %d \n", fleetSize);
@@ -128,10 +129,11 @@ public class JetsApplication {
 		System.out.println("--------------------------------------------- ");
 	}
 
-	public void flyAllJets(AirField af) {
+	private void flyAllJets(AirField af) {
 		fleetSize = af.getJets().size();
 		if (fleetSize == 0) {
 			System.out.println("There is no aircraft on the field. Please add an aircraft.");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		System.out.printf("Number of aircraft ready for flight: %d \n", fleetSize);
@@ -142,10 +144,11 @@ public class JetsApplication {
 		System.out.println("--------------------------------------------- ");
 	}
 
-	public void viewFastestJet(AirField af) {
+	private void viewFastestJet(AirField af) {
 		fleetSize = af.getJets().size();
 		if (fleetSize == 0) {
 			System.out.println("There is no aircraft on the field. Please add an aircraft.");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		double maxSpeed = 0;
@@ -167,10 +170,11 @@ public class JetsApplication {
 		}
 	}
 
-	public void viewLongestRange(AirField af) {
+	private void viewLongestRange(AirField af) {
 		fleetSize = af.getJets().size();
 		if (fleetSize == 0) {
 			System.out.println("There is no aircraft on the field. Please add an aircraft.");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		int maxRange = 0;
@@ -192,7 +196,7 @@ public class JetsApplication {
 		}
 	}
 
-	public void loadAllCargoJets(AirField af) {
+	private void loadAllCargoJets(AirField af) {
 		int cargoFleetSize = 0;
 		// find the number of cargo jets
 		for (Jet jet : af.getJets()) {
@@ -202,6 +206,7 @@ public class JetsApplication {
 		}
 		if (cargoFleetSize == 0) {
 			System.out.println("There is no Cargo Aircraft on the field. Please add a Cargo Aircraft.");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		for (Jet jet : af.getJets()) {
@@ -212,7 +217,7 @@ public class JetsApplication {
 		System.out.println("--------------------------------------------- ");
 	}
 
-	public void dogFight(AirField af) {
+	private void dogFight(AirField af) {
 		int fighterFleetSize = 0;
 		// find the number of fighter jets
 		for (Jet jet : af.getJets()) {
@@ -222,6 +227,7 @@ public class JetsApplication {
 		}
 		if (fighterFleetSize == 0) {
 			System.out.println("There is no Fighter Aircraft on the field. Please add a Fighter Aircraft.");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		for (Jet jet : af.getJets()) {
@@ -232,7 +238,7 @@ public class JetsApplication {
 		System.out.println("--------------------------------------------- ");
 	}
 
-	public void loadAllPassenger(AirField af) {
+	private void loadAllPassenger(AirField af) {
 		int passengerFleetSize = 0;
 		// find the number of passenger jets
 		for (Jet jet : af.getJets()) {
@@ -242,6 +248,7 @@ public class JetsApplication {
 		}
 		if (passengerFleetSize == 0) {
 			System.out.println("There is no Passenger Aircraft on the field. Please add a Passenger Aircraft.");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		for (Jet jet : af.getJets()) {
@@ -252,7 +259,7 @@ public class JetsApplication {
 		System.out.println("--------------------------------------------- ");
 	}
 
-	public void displayJetSubMenu() {
+	private void displayJetSubMenu() {
 		System.out.println("=============================================");
 		System.out.println("|| Adding an aircraft to the fleet:        ||");
 		System.out.println("|| 1. Cargo Aircraft                       ||");
@@ -331,7 +338,7 @@ public class JetsApplication {
 		}
 	}
 
-	public boolean addNewJet(String jetType, AirField af) {
+	private boolean addNewJet(String jetType, AirField af) {
 		System.out.printf("Add a %s Aircraft to the fleet... \n", jetType);
 		System.out.println("Type \"cancel\" anytime you change your mind...");
 		String model;
@@ -391,7 +398,7 @@ public class JetsApplication {
 
 	}
 
-	public void addNewJetProcedure(AirField af) {
+	private void addNewJetProcedure(AirField af) {
 		String userInput;
 		boolean newAirCraftIsAdded;
 		while (true) {
@@ -435,9 +442,10 @@ public class JetsApplication {
 		}
 	}
 
-	public void removeJetProcedure(AirField af) {
+	private void removeJetProcedure(AirField af) {
 		if (af.getJets().size() == 0) {
 			System.out.println("There is no aircraft on the field. Please add new aircraft");
+			System.out.println("--------------------------------------------- ");
 			return;
 		}
 		// display aircraft for removal:
